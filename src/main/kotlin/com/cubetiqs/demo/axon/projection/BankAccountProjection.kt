@@ -5,8 +5,10 @@ import com.cubetiqs.demo.axon.event.AccountCreatedEvent
 import com.cubetiqs.demo.axon.event.MoneyCreditedEvent
 import com.cubetiqs.demo.axon.event.MoneyDebitedEvent
 import com.cubetiqs.demo.axon.exception.AccountNotFoundException
+import com.cubetiqs.demo.axon.query.FindBankAccountQuery
 import com.cubetiqs.demo.axon.repository.BankAccountRepository
 import org.axonframework.eventhandling.EventHandler
+import org.axonframework.queryhandling.QueryHandler
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Component
@@ -55,5 +57,11 @@ class BankAccountProjection @Autowired constructor(
         } else {
             throw AccountNotFoundException(event.accountId)
         }
+    }
+
+    @QueryHandler
+    fun handle(query: FindBankAccountQuery): BankAccount? {
+        log.debug("Handling FindBankAccountQuery query: {}", query)
+        return this.bankAccountRepository.findById(query.accountId).orElse(null)
     }
 }

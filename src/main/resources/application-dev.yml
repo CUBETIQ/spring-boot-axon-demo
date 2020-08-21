@@ -30,3 +30,7 @@ spring:
         temp:
           use_jdbc_metadata_defaults: false
     open-in-view: true
+
+axon:
+  serializer:
+    general: jackson

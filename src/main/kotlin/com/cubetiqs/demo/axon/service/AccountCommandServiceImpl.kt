@@ -6,6 +6,7 @@ import com.cubetiqs.demo.axon.command.DebitMoneyCommand
 import com.cubetiqs.demo.axon.dto.AccountCreationDTO
 import com.cubetiqs.demo.axon.dto.MoneyAmountDTO
 import com.cubetiqs.demo.axon.entity.BankAccount
+import com.cubetiqs.demo.axon.util.text.formatUuid
 import org.axonframework.commandhandling.gateway.CommandGateway
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
@@ -29,7 +30,7 @@ class AccountCommandServiceImpl @Autowired constructor(
     override fun creditMoneyToAccount(accountId: String?, moneyCreditDTO: MoneyAmountDTO): CompletableFuture<String?> {
         return commandGateway.send(
             CreditMoneyCommand(
-                formatUuid(accountId),
+                accountId.formatUuid(),
                 moneyCreditDTO.amount
             )
         )
@@ -38,13 +39,11 @@ class AccountCommandServiceImpl @Autowired constructor(
     override fun debitMoneyFromAccount(accountId: String?, moneyDebitDTO: MoneyAmountDTO): CompletableFuture<String?> {
         return commandGateway.send(
             DebitMoneyCommand(
-                formatUuid(accountId),
+                accountId.formatUuid(),
                 moneyDebitDTO.amount
             )
         )
     }
 
-    private fun formatUuid(accountId: String?): UUID {
-        return UUID.fromString(accountId)
-    }
+
 }
