@@ -16,14 +16,14 @@ import java.math.BigDecimal
 import java.util.UUID
 
 @Aggregate
-class BankAccountAggregate(
+class BankAccountAggregate() {
     @AggregateIdentifier
-    private var id: UUID? = null,
-    private var balance: BigDecimal? = null,
+    private var id: UUID? = null
+    private var balance: BigDecimal? = null
     private var owner: String? = null
-) {
+
     @CommandHandler
-    constructor(command: CreateAccountCommand) {
+    constructor(command: CreateAccountCommand) : this() {
         AggregateLifecycle.apply(
             AccountCreatedEvent(
                 command.accountId,
