@@ -6,9 +6,9 @@ spring:
     name: axon-demo
   datasource:
     driverClassName: org.postgresql.Driver
-    url: jdbc:postgresql://${POSTGRES_HOST:192.168.0.202}:${POSTGRES_PORT:5432}/${POSTGRES_DB:axon_demo}
-    username: ${POSTGRES_USERNAME:cubetiq}
-    password: ${POSTGRES_PASSWORD:Root$}
+    url: jdbc:postgresql://${POSTGRES_HOST:localhost}:${POSTGRES_PORT:5432}/${POSTGRES_DB:axon_demo}
+    username: ${POSTGRES_USERNAME:root}
+    password: ${POSTGRES_PASSWORD:root}
     hikari:
       max-lifetime: 1800000
       connection-timeout: 30000
@@ -37,7 +37,7 @@ axon:
   serializer:
     general: jackson
   axonserver:
-    servers: 192.168.0.202
+    servers: localhost
 
 logging:
   level.root: debug
