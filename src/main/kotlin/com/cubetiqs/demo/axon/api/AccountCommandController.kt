@@ -40,7 +40,7 @@ class AccountCommandController @Autowired constructor(
     fun debitMoneyFromAccount(
         @PathVariable(value = "accountId") accountId: String,
         @RequestBody moneyDebitDTO: MoneyAmountDTO
-    ): CompletableFuture<String?>? {
+    ): CompletableFuture<String?> {
         return this.accountCommandService.debitMoneyFromAccount(accountId, moneyDebitDTO)
     }
 }
