@@ -1,2 +1,3 @@
-server:
-  port: 8182
+spring:
+  profiles:
+    active: dev
