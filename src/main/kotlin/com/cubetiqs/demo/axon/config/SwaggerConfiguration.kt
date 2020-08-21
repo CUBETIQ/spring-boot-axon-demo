@@ -10,12 +10,14 @@ import springfox.documentation.spi.DocumentationType
 import springfox.documentation.spring.web.plugins.Docket
 import springfox.documentation.swagger2.annotations.EnableSwagger2
 import java.util.Collections
+import java.util.concurrent.CompletableFuture
 
 @Configuration
 @EnableSwagger2
 class SwaggerConfiguration {
     @Bean
     fun apiDocket(): Docket {
+        val ignoreClasses = arrayListOf(CompletableFuture::class.java).toTypedArray()
         return Docket(DocumentationType.SWAGGER_2)
             .select()
             .apis(
@@ -24,6 +26,7 @@ class SwaggerConfiguration {
             )
             .paths(PathSelectors.any())
             .build()
+            .ignoredParameterTypes(*ignoreClasses)
             .apiInfo(apiInfo)
     }
 
