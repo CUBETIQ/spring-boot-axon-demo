@@ -1,8 +1,8 @@
 # Spring Boot + Axon Framework
 ### Concepts to implement
-- [ ] Event Sourcing
+- [x] Event Sourcing
+- [x] CQRS System
 - [ ] DDD
-- [ ] CQRS System
 
 ### Contributors
 - [x] Sambo Chea <sombochea@cubetiqs.com>
