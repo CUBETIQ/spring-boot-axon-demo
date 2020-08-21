@@ -44,6 +44,4 @@ class AccountCommandServiceImpl @Autowired constructor(
             )
         )
     }
-
-
 }

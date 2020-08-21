@@ -62,6 +62,6 @@ class BankAccountProjection @Autowired constructor(
     @QueryHandler
     fun handle(query: FindBankAccountQuery): BankAccount? {
         log.debug("Handling FindBankAccountQuery query: {}", query)
-        return this.bankAccountRepository.findById(query.accountId).orElse(null)
+        return this.bankAccountRepository.findById(query.id).orElse(null)
     }
 }

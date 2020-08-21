@@ -2,6 +2,8 @@ server:
   port: 8182
 
 spring:
+  application:
+    name: axon-demo
   datasource:
     driverClassName: org.postgresql.Driver
     url: jdbc:postgresql://${POSTGRES_HOST:192.168.0.202}:${POSTGRES_PORT:5432}/${POSTGRES_DB:axon_demo}
@@ -34,3 +36,8 @@ spring:
 axon:
   serializer:
     general: jackson
+  axonserver:
+    servers: 192.168.0.202
+
+logging:
+  level.root: debug
