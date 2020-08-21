@@ -11,12 +11,14 @@ import org.axonframework.commandhandling.CommandHandler
 import org.axonframework.eventsourcing.EventSourcingHandler
 import org.axonframework.modelling.command.AggregateIdentifier
 import org.axonframework.modelling.command.AggregateLifecycle
+import org.axonframework.serialization.Revision
 import org.axonframework.spring.stereotype.Aggregate
 import java.math.BigDecimal
 import java.util.UUID
 
 @Aggregate
-class BankAccountAggregate() {
+@Revision("1.0")
+final class BankAccountAggregate() {
     @AggregateIdentifier
     private var id: UUID? = null
     private var balance: BigDecimal? = null

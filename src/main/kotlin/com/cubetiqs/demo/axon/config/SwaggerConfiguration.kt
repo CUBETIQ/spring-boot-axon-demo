@@ -17,7 +17,6 @@ import java.util.concurrent.CompletableFuture
 class SwaggerConfiguration {
     @Bean
     fun apiDocket(): Docket {
-        val ignoreClasses = arrayListOf(CompletableFuture::class.java).toTypedArray()
         return Docket(DocumentationType.SWAGGER_2)
             .select()
             .apis(
@@ -26,7 +25,6 @@ class SwaggerConfiguration {
             )
             .paths(PathSelectors.any())
             .build()
-            .ignoredParameterTypes(*ignoreClasses)
             .apiInfo(apiInfo)
     }
 
